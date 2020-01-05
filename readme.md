@@ -1,15 +1,7 @@
-This is a todo-list made with vanilla JS. I was studying the submit event and all I can do with it.
+This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde the scenes for create and use the app.
 
-![Alt](https://raw.githubusercontent.com/shinspiegel/todo-list-vanilla-javascript/master/TodoListMockup.jpg)
+This is a small script that will clone into a new folder named **my-project**, remove the old .git and create a new one for you.
 
-I did use only **HTML5**, **CSS** and **JS**. It uses local storage for persistence, but can be easyly change for any database.
-
-I have used [Parcel Bundler](https://github.com/parcel-bundler/parcel) for the bundling and converting JS for all browsers.
-
-**Want to test it?**
-
-```
-git clone;
-npm i;
-npm run dev;
+```sh
+git clone https://github.com/shinspiegel/parcel-react.git my-project; cd my-project; rm -rf .git; git init; git add -A; git commit -m "Initial files"; yarn; yarn dev;
 ```
