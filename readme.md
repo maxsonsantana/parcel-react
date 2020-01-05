@@ -1,5 +1,13 @@
 This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde the scenes for create and use the app.
 
+#### What is comes?
+
+- [x] React App
+- [x] Parcel-bundler
+- [x] React Context :D
+
+#### Clone it!
+
 This is a small script that will clone into a new folder named **my-project**, remove the old .git and create a new one for you.
 
 ```sh
