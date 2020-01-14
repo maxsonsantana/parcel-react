@@ -4,22 +4,15 @@
   "description": "unNamed project",
   "main": "src/index.html",
   "scripts": {
-    "pre:dev": "rm -rf ./.git; git init; yarn fix:husky",
     "dev": "parcel -p 5050 watch src/index.html",
     "build": "parcel build src/index.html",
     "test": "jest",
-    "doc": "jsdoc -c ./jsdoc.json",
-    "fix:husky": "yarn remove husky; yarn add husky"
+    "doc": "jsdoc -c ./jsdoc.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "jest": {},
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn test; yarn doc;"
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
@@ -35,7 +28,6 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.8.3",
-    "husky": "^4.0.9",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
