@@ -1,12 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { ContextProvider } from "./context/context";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ContextProvider } from './context/context';
 
-import App from "./src/App";
+import App from './src/App';
 
 ReactDOM.render(
   <ContextProvider>
-    <App />
+    <App title={'Hello World'} />
   </ContextProvider>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );

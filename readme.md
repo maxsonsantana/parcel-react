@@ -7,6 +7,8 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] Parcel-bundler
 - [x] React Context
 - [x] Now with tests using `@testing-library/react`
+- [x] And jsDoc for intelissense
+- [x] `husky` for test and docs before every commit
 
 #### Clone it!
 

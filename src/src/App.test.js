@@ -9,7 +9,7 @@ describe('Basic test', () => {
   test('Test click on the button and change the state', () => {
     const { debug, getByText } = render(
       <ContextProvider>
-        <App />
+        <App title={'Hello'} />
       </ContextProvider>,
     );
 

@@ -6,20 +6,30 @@
   "scripts": {
     "dev": "parcel -p 5050 watch src/index.html",
     "build": "parcel build src/index.html",
-    "test": "jest"
+    "test": "jest",
+    "doc": "jsdoc -c ./jsdoc.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "jest": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test; yarn doc;"
+    }
+  },
   "devDependencies": {
+    "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@types/jest": "^24.0.25",
     "babel-jest": "^24.9.0",
+    "better-docs": "^1.4.7",
+    "husky": "^4.0.9",
     "jest": "^24.9.0",
     "jest-transform-stub": "^2.0.0",
+    "jsdoc": "^3.6.3",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
