@@ -13,12 +13,6 @@
   "author": "",
   "license": "ISC",
   "jest": {},
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn test;",
-      "post-commit": "yarn doc;"
-    }
-  },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
@@ -34,7 +28,6 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.8.3",
-    "husky": "^4.0.9",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }
