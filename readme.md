@@ -17,8 +17,7 @@ This is a small script that will clone into a new folder named **my-project**, r
 ```sh
 git clone https://github.com/shinspiegel/parcel-react.git my-project;
 cd my-project;
-rm -rf .git;
-git init;
+yarn pre:dev;
 git add -A;
 git commit -m "Initial files";
 yarn;
