@@ -10,6 +10,11 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] And jsDoc for intelissense
 - [x] Husrky with `jest` before each commit
 - [x] esLint for the most common uses
+- [x] dev environment with _https_ as default
+
+#### Custom certificates and key
+
+Place the certificate and key on the `.certs` folder on the root of the application. You can create this certificates and key with the `mkcert`, otherwise just use the `yarn dev:http` for the basic (without https) server.
 
 #### Clone it!
 

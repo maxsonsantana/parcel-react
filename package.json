@@ -4,7 +4,8 @@
   "description": "unNamed project",
   "main": "src/index.html",
   "scripts": {
-    "dev": "parcel -p 5050 watch src/index.html",
+    "dev": "parcel -p 5050 watch src/index.html --https --cert .certs/cert.pem --key .certs/key.pem",
+    "dev:http": "parcel -p 5050 watch src/index.html",
     "build": "parcel build src/index.html",
     "test": "jest",
     "doc": "jsdoc -c ./jsdoc.json"
@@ -23,7 +24,7 @@
     "@types/jest": "^24.0.25",
     "babel-jest": "^24.9.0",
     "better-docs": "^1.4.7",
-    "husky": "^4.0.10",
+    "husky": "^4.1.0",
     "jest": "^24.9.0",
     "jest-transform-stub": "^2.0.0",
     "jsdoc": "^3.6.3",
