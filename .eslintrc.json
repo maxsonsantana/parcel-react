@@ -3,7 +3,7 @@
   "plugins": ["react", "prettier", "jest", "promise", "react-hooks"],
   "rules": {
     "prettier/prettier": ["error"],
-    "quotes": ["error", "single"],
+    "quotes": ["error", "double"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-underscore-dangle": ["error", { "allow": ["_id"] }]
