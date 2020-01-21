@@ -8,6 +8,8 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] React Context
 - [x] Now with tests using `@testing-library/react`
 - [x] And jsDoc for intelissense
+- [x] Husrky with `jest` before each commit
+- [x] esLint for the most common uses
 
 #### Clone it!
 
