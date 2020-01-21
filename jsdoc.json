@@ -7,7 +7,12 @@
     "destination": "docs/",
     "recurse": true,
     "verbose": true,
-    "template": "./node_modules/better-docs"
+    "template": "./node_modules/minami"
   },
-  "templates": { "better-docs": { "name": "Parcel-React" } }
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": true,
+    "useLongnameInNav": false,
+    "showInheritedInNav": true
+  }
 }
