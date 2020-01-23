@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ContextProvider } from './context/context';
 
-import App from './pages/App';
+import Routes from './pages/Routes';
 
 ReactDOM.render(
   <ContextProvider>
-    <App />
+    <Routes />
   </ContextProvider>,
   document.getElementById('root'),
 );
