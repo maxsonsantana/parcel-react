@@ -11,6 +11,7 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] Husrky with `jest` before each commit
 - [x] esLint for the most common uses
 - [x] dev environment with _https_ as default
+- [x] With routes and `react-router-dom`
 
 #### Custom certificates and key
 

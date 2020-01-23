@@ -6,7 +6,7 @@ import AppContext from '../context/context';
  * @param {Object} props
  * @param {String} props.title This is the title on the <h1> tag
  */
-const App = ({ Title }) => {
+const Main = ({ Title = 'NotDefined' }) => {
   const { state, dispatch } = useContext(AppContext);
   const { count } = state;
 
@@ -24,4 +24,4 @@ const App = ({ Title }) => {
   );
 };
 
-export default App;
+export default Main;
