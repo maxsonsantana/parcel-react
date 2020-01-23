@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
-import Navigation from '../navigation/Navigation';
-import Main from './Main';
-import Help from './Help';
+import Navigation from './navigation/Navigation';
+import Main from './pages/Main';
+import Help from './pages/Help';
 
 const Router = () => {
   return (
