@@ -1,0 +1,12 @@
+{
+  "name": "unnamed-project",
+  "short_name": "unnamed-project",
+  "description": "This is a unnamed-project for boiler plate",
+  "dir": "ltr",
+  "lang": "en",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#339",
+  "icons": [{ "src": "image-192.png", "sizes": "192x192", "type": "image/png" }]
+}

@@ -12,6 +12,12 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] esLint for the most common uses
 - [x] dev environment with _https_ as default
 - [x] With routes and `react-router-dom`
+- [x] Enviromental variables
+- [x] `service-worker` integrated
+
+#### Service worker and domains
+
+Service worker doesn't have access to enviroment variables, in this case need to be set manually. Still working on a automated way of doing this.
 
 #### Custom certificates and key
 
@@ -19,11 +25,11 @@ Place the certificate and key on the `.certs` folder on the root of the applicat
 
 #### Clone it!
 
-This is a small script that will clone into a new folder named **my-project**, remove the old .git and create a new one for you.
+This is a small script that will clone into a new folder named **unnamed-project**, remove the old .git and create a new one for you.
 
 ```sh
-git clone https://github.com/shinspiegel/parcel-react.git my-project;
-cd my-project;
+git clone https://github.com/shinspiegel/parcel-react.git unnamed-project;
+cd unnamed-project;
 rm -rf .git; git init;
 git add -A;
 git commit -m "Initial files";
