@@ -12,6 +12,12 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] esLint for the most common uses
 - [x] dev environment with _https_ as default
 - [x] With routes and `react-router-dom`
+- [x] Enviromental variables
+- [x] `service-worker` integrated
+
+#### Service worker and domains
+
+Service worker doesn't have access to enviroment variables, in this case need to be set manually. Still working on a automated way of doing this.
 
 #### Custom certificates and key
 
