@@ -41,6 +41,8 @@ build/Release
 node_modules/
 jspm_packages/
 node_modules/
+
+# Build and Cache directories
 .cache/
 .certs/
 data/

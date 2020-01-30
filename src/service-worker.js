@@ -6,7 +6,8 @@ const STATIC_CACHE = 'static-v1';
 const DINAMYC_CACHE = 'dynamic-v2';
 
 self.addEventListener('install', event => {
-  console.log('[Service Worker] Installing Service Worker ...', event);
+  console.log('[Service Worker] Installing Service Worker ...', {event});
+
   event.waitUntil(
     caches.open(STATIC_CACHE).then(cache => {
       console.log('[Service Worker] Precaching App Shell');
@@ -16,7 +17,7 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('activate', event => {
-  console.log('[Service Worker] Activating Service Worker ....', event);
+  console.log('[Service Worker] Activating Service Worker ....', {event});
 
   event.waitUntil(
     caches.keys().then(keyList => {
@@ -35,10 +36,10 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  const requestUrl = event.request.url;
   trimCache(DINAMYC_CACHE, 50);
+  const requestUrl = event.request.url;
 
-  if (urlListForNetworkFirst.find(url => requestUrl.includes(url)))
+  if (urlListForNetworkFirst.find(url => requestUrl.includes(url))) 
     return event.respondWith(NetworkFirst(event, DINAMYC_CACHE));
 
   if (urlListForCacheFirst.find(url => requestUrl.includes(url)))
@@ -56,10 +57,10 @@ const trimCache = (cacheName, maxItems) => {
   );
 };
 
-const NetworkFirst = event => {
+const NetworkFirst = (event, storage) => {
   return fetch(event.request)
     .then(res =>
-      caches.open(DINAMYC_CACHE).then(cache => {
+      caches.open(storage).then(cache => {
         cache.put(event.request.url, res.clone());
         return res;
       }),
@@ -71,10 +72,6 @@ const NetworkFirst = event => {
           caches.open(STATIC_CACHE).then(cache => cache.match('/index.html')),
         ),
     );
-};
-
-const CacheOnly = event => {
-  return caches.match(event.request);
 };
 
 const CacheFirst = (event, storage) => {

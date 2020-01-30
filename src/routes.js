@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Navigation from './navigation/Navigation';
 import Main from './pages/Main';
@@ -11,17 +11,9 @@ const Router = () => {
       <Navigation />
 
       <Switch>
-        <Route path='/' exact>
-          <Main />
-        </Route>
-
-        <Route path='/help'>
-          <Help />
-        </Route>
-
-        <Route path='/'>
-          <h1>404</h1>
-        </Route>
+        <Route component={Main} path='/' exact />
+        <Route component={Help} path='/help' />
+        <Route component={() => <h1>404</h1>} path='/*' />
       </Switch>
     </BrowserRouter>
   );
