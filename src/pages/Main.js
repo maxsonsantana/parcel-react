@@ -4,7 +4,7 @@ import AppContext from '../context/context';
 /**
  * This is the basic docs for this component
  * @param {Object} props
- * @param {String} props.title This is the title on the <h1> tag
+ * @param {String} props.title This is the title on the h1 tag
  */
 const Main = ({ Title = 'NotDefined' }) => {
   const { state, dispatch } = useContext(AppContext);

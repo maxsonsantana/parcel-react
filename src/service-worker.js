@@ -6,32 +6,14 @@ const STATIC_CACHE = 'static-v1';
 const DINAMYC_CACHE = 'dynamic-v2';
 
 self.addEventListener('install', event => {
-  console.log('[Service Worker] Installing Service Worker ...', {event});
-
-  event.waitUntil(
-    caches.open(STATIC_CACHE).then(cache => {
-      console.log('[Service Worker] Precaching App Shell');
-      cache.addAll(STATIC_FILES);
-    }),
-  );
+  console.log('[Service Worker] Installing Service Worker ...', { event });
+  self.skipWaiting();
+  event.waitUntil(cacheResources());
 });
 
 self.addEventListener('activate', event => {
-  console.log('[Service Worker] Activating Service Worker ....', {event});
-
-  event.waitUntil(
-    caches.keys().then(keyList => {
-      return Promise.all(
-        keyList.map(key => {
-          if (key !== STATIC_CACHE && key !== DINAMYC_CACHE) {
-            console.log('[Service Worker] Removing old cache.', key);
-            return caches.delete(key);
-          }
-        }),
-      );
-    }),
-  );
-
+  console.log('[Service Worker] Activating Service Worker ....', { event });
+  event.waitUntil(clearOldCache());
   return self.clients.claim();
 });
 
@@ -39,7 +21,7 @@ self.addEventListener('fetch', event => {
   trimCache(DINAMYC_CACHE, 50);
   const requestUrl = event.request.url;
 
-  if (urlListForNetworkFirst.find(url => requestUrl.includes(url))) 
+  if (urlListForNetworkFirst.find(url => requestUrl.includes(url)))
     return event.respondWith(NetworkFirst(event, DINAMYC_CACHE));
 
   if (urlListForCacheFirst.find(url => requestUrl.includes(url)))
@@ -48,16 +30,31 @@ self.addEventListener('fetch', event => {
   return event.respondWith(CacheFirst(event, DINAMYC_CACHE));
 });
 
-const trimCache = (cacheName, maxItems) => {
-  caches.open(cacheName).then(cache =>
-    cache.keys().then(keys => {
-      if (keys.length > maxItems)
-        cache.delete(keys[0]).then(trimCache(cacheName, maxItems));
-    }),
-  );
+const cacheResources = async () => {
+  const cache = await caches.open(STATIC_CACHE);
+  return cache.addAll(STATIC_FILES);
 };
 
-const NetworkFirst = (event, storage) => {
+const clearOldCache = async () => {
+  let cacheNamesList = [];
+  cacheNamesList = await caches.keys();
+  cacheNamesList = cacheNamesList.filter(name => name !== STATIC_CACHE);
+  cacheNamesList = cacheNamesList.filter(name => name !== DINAMYC_CACHE);
+  cacheNamesList.map(cacheName => caches.delete(cacheName));
+};
+
+const trimCache = async (cacheName, maxItems) => {
+  const cache = await caches.open(cacheName);
+  const cacheKeys = await cache.keys();
+
+  if (cacheKeys.length > maxItems) {
+    console.log('[Service Worker] Deleting item from cache', cacheKeys[0]);
+    await cache.delete(cacheKeys[0]);
+    trimCache(cacheName, maxItems);
+  }
+};
+
+const NetworkFirst = async (event, storage) => {
   return fetch(event.request)
     .then(res =>
       caches.open(storage).then(cache => {
@@ -65,7 +62,7 @@ const NetworkFirst = (event, storage) => {
         return res;
       }),
     )
-    .catch(err =>
+    .catch(() =>
       caches
         .match(event.request)
         .catch(() =>
