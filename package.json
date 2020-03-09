@@ -1,6 +1,6 @@
 {
   "name": "un-named",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "unNamed project",
   "main": "src/index.html",
   "license": "ISC",
@@ -10,25 +10,44 @@
     "last 1 Chrome version"
   ],
   "scripts": {
-    "dev": "parcel -p 5050 watch src/index.html --https --cert .certs/cert.pem --key .certs/key.pem",
-    "dev:http": "parcel -p 5050 watch src/index.html",
+    "start": "yarn dev:https",
+    "dev": "yarn dev:https",
+    "dev:https": "rm -rf ./dist; parcel -p 5050 watch src/index.html --https --cert .certs/cert.pem --key .certs/key.pem",
+    "dev:http": "rm -rf ./dist; parcel -p 5050 watch src/index.html",
     "build": "parcel build src/index.html",
     "test": "jest",
-    "doc": "jsdoc -c ./jsdoc.json"
+    "docs": "jsdoc -c ./jsdoc.json",
+    "workspace:clean": "rm -rf .cache dist docs node_modules; yarn",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn test"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS && yarn test --silent=true --verbose=false"
     }
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "silent": false
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "standard-version": {
+    "scripts": {
+      "postchangelog": "replace 'https://github.com/shinspiegel/parcel-react/issues' 'https://github.com/shinspiegel/parcel-react/issues' CHANGELOG.md"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
     "@babel/runtime": "^7.8.4",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@types/jest": "^24.0.25",
@@ -38,7 +57,8 @@
     "jest": "^24.9.0",
     "jsdoc": "^3.6.3",
     "minami": "^1.2.3",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "standard-version": "^7.1.0"
   },
   "dependencies": {
     "@babel/preset-react": "^7.8.3",

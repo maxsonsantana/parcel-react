@@ -8,12 +8,15 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] React Context
 - [x] Now with tests using `@testing-library/react`
 - [x] And jsDoc for intelissense
-- [x] Husrky with `jest` before each commit
+- [x] Husky with `jest` before each commit
+- [x] Silent test before each commit
 - [x] esLint for the most common uses
 - [x] dev environment with _https_ as default
 - [x] With routes and `react-router-dom`
 - [x] Enviromental variables
 - [x] `service-worker` integrated
+- [x] Commitlint as default
+- [x] Standard Versioning in the box (_check the package.json on the startdard version_)
 
 #### Service worker and domains
 
@@ -25,7 +28,9 @@ Place the certificate and key on the `.certs` folder on the root of the applicat
 
 #### Clone it!
 
-This is a small script that will clone into a new folder named **unnamed-project**, remove the old .git and create a new one for you.
+This is a small script that will clone into a new folder named **unnamed-project**, remove the old .git and create a new one for you and start the http server.
+
+_The initial load time for the server is around 2~3 seconds_
 
 ```sh
 git clone https://github.com/shinspiegel/parcel-react.git unnamed-project;
@@ -34,5 +39,5 @@ rm -rf .git; git init;
 git add -A;
 git commit -m "Initial files";
 yarn;
-yarn dev;
+yarn dev:http;
 ```
