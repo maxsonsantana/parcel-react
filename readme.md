@@ -17,6 +17,7 @@ This is a basic boilerplate for a react-app that uses `parcel-bundler` behinde t
 - [x] `service-worker` integrated
 - [x] Commitlint as default
 - [x] Standard Versioning in the box (_check the package.json on the startdard version_)
+- [x] Prettier before every commit with `pretty-quick`
 
 #### Service worker and domains
 

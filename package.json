@@ -1,35 +1,29 @@
 {
   "name": "un-named",
-  "version": "0.1.0",
-  "description": "unNamed project",
+  "version": "0.2.0",
+  "description": "Projeto Meu Mercado",
   "main": "src/index.html",
-  "license": "ISC",
+  "license": "MIT",
   "keywords": [],
-  "author": "",
+  "author": "Jeferson 'Shin' Leite Borges <https://github.com/shinspiegel/>",
   "browserslist": [
     "last 1 Chrome version"
   ],
   "scripts": {
-    "start": "yarn dev:https",
-    "dev": "yarn dev:https",
-    "dev:https": "rm -rf ./dist; parcel -p 5050 watch src/index.html --https --cert .certs/cert.pem --key .certs/key.pem",
-    "dev:http": "rm -rf ./dist; parcel -p 5050 watch src/index.html",
-    "build": "parcel build src/index.html",
+    "dev": "rm -rf ./dist; parcel -p 5050 watch src/index.html --https --cert .certs/cert.pem --key .certs/key.pem",
+    "dev:http": "parcel -p 5050 watch src/index.html",
+    "build": "parcel build src/index.html --out-dir build",
     "test": "jest",
-    "docs": "jsdoc -c ./jsdoc.json",
-    "workspace:clean": "rm -rf .cache dist docs node_modules; yarn",
+    "doc": "jsdoc -c ./docs/.jsdoc.json --readme ./readme.md",
+    "workspace:clean": "rm -rf .cache dist node_modules; yarn",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS && yarn test --silent=true --verbose=false"
+      "commit-msg": "pretty-quick --staged && commitlint -E HUSKY_GIT_PARAMS && yarn test --silent=true"
     }
-  },
-  "jest": {
-    "verbose": true,
-    "silent": false
   },
   "commitlint": {
     "extends": [
@@ -38,13 +32,95 @@
   },
   "standard-version": {
     "scripts": {
-      "postchangelog": "replace 'https://github.com/shinspiegel/parcel-react/issues' 'https://github.com/shinspiegel/parcel-react/issues' CHANGELOG.md"
+      "postchangelog": "replace 'https://github.com/shinspiegel/pos-graduacao-frontend/issues/' 'https://ora.pm/project/196922/kanban/task/' CHANGELOG.md"
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/assetsTransformer.js",
+      "\\.(css|less)$": "<rootDir>/assetsTransformer.js"
+    }
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": 12
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ],
+    "plugins": [
+      [
+        "@babel/transform-runtime",
+        {
+          "regenerator": true
+        }
+      ]
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "semi": true,
+    "useTabs": false,
+    "bracketSpacing": true
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-base",
+      "prettier",
+      "plugin:react/recommended"
+    ],
+    "plugins": [
+      "react",
+      "prettier",
+      "jest",
+      "promise",
+      "react-hooks"
+    ],
+    "rules": {
+      "prettier/prettier": [
+        "error"
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ],
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_id"
+          ]
+        }
+      ]
+    },
+    "env": {
+      "jest/globals": true
+    },
+    "globals": {
+      "fetch": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
     }
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
     "@babel/runtime": "^7.8.4",
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
@@ -53,16 +129,18 @@
     "@types/jest": "^24.0.25",
     "babel-jest": "^24.9.0",
     "better-docs": "^1.4.7",
+    "eslint": "^6.8.0",
     "husky": "^4.2.0",
     "jest": "^24.9.0",
     "jsdoc": "^3.6.3",
     "minami": "^1.2.3",
     "parcel-bundler": "^1.12.4",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
     "replace": "^1.1.5",
     "standard-version": "^7.1.0"
   },
   "dependencies": {
-    "@babel/preset-react": "^7.8.3",
     "dotenv": "^8.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

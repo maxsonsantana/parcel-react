@@ -47,7 +47,13 @@ node_modules/
 .certs/
 data/
 dist/
-docs/
+
+docs/*
+!docs/jsdoc.json
+
+build/*
+!build/_redirects
+
 
 # TypeScript v1 declaration files
 typings/
