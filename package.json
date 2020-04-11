@@ -135,7 +135,7 @@
     "jsdoc": "^3.6.3",
     "minami": "^1.2.3",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^1.19.1",
+    "prettier": "^2.0.4",
     "pretty-quick": "^2.0.1",
     "replace": "^1.1.5",
     "standard-version": "^7.1.0"
