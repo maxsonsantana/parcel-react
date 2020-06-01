@@ -13,7 +13,7 @@ export const reducerCases = {
 const Reducer = (state, { type, payload }) => {
   switch (type) {
     case reducerCases.test:
-      console.log('reducer test');
+      console.log(`[REDUCER] ${type}`);
       return state;
 
     case reducerCases.increase:

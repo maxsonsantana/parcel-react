@@ -9,7 +9,7 @@ const useActions = () => {
   const { state, dispatch } = useContext(AppContext);
 
   const consoleTest = (payload) => {
-    console.log('actions test');
+    console.log('[USE_ACTION]');
     dispatch({ type: redux.test, payload });
     return;
   };
